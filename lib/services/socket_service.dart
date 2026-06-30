@@ -8,8 +8,7 @@ class SocketService with ChangeNotifier {
   late io.Socket _socket;
 
   ServerStatus get serverStatus => _serverStatus;
-  io.Socket get socket =>
-      _socket; // <-- Por si necesitas usarlo en tus pantallas
+  io.Socket get socket => _socket;
 
   SocketService() {
     _initConfig();
@@ -36,8 +35,15 @@ class SocketService with ChangeNotifier {
       notifyListeners();
     });
 
+    // _socket.on('emitir-mensaje', (payload) {
+    //   debugPrint('Nuevo-mensaje: $payload');
+    //   debugPrint(
+    //     payload.containsKey('mensaje2') ? payload['mensaje2'] : 'No hay',
+    //   );
+    // });
+
     //  Escuchar errores de conexión
-    // _socket.onConnectError((data) => print('Error de conexión: $data'));
-    // _socket.onTypeError((data) => print('Error de tipo: $data'));
+    _socket.onConnectError((data) => debugPrint('Error de conexión: $data'));
+    // _socket.onTypeError((data) => debugPrint('Error de tipo: $data'));
   }
 }
