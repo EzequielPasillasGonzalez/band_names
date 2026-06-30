@@ -35,15 +35,10 @@ class SocketService with ChangeNotifier {
       notifyListeners();
     });
 
-    // _socket.on('emitir-mensaje', (payload) {
-    //   debugPrint('Nuevo-mensaje: $payload');
-    //   debugPrint(
-    //     payload.containsKey('mensaje2') ? payload['mensaje2'] : 'No hay',
-    //   );
-    // });
+
+    
 
     //  Escuchar errores de conexión
     _socket.onConnectError((data) => debugPrint('Error de conexión: $data'));
-    // _socket.onTypeError((data) => debugPrint('Error de tipo: $data'));
   }
 }
